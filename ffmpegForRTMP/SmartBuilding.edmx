@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SmartBuildingModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SmartBuildingModelStoreContainer">
+          <EntitySet Name="CamInfo" EntityType="SmartBuildingModel.Store.CamInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CamRTMP" EntityType="SmartBuildingModel.Store.CamRTMP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CompanyInfo" EntityType="SmartBuildingModel.Store.CompanyInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="News" EntityType="SmartBuildingModel.Store.News" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SysLog" EntityType="SmartBuildingModel.Store.SysLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserInfo" EntityType="SmartBuildingModel.Store.UserInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="VideoPath" EntityType="SmartBuildingModel.Store.VideoPath" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WebPurviewMenu" EntityType="SmartBuildingModel.Store.WebPurviewMenu" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WebUserPurview" EntityType="SmartBuildingModel.Store.WebUserPurview" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="CamInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Channel" Type="int" />
+          <Property Name="CamName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Owner" Type="varchar" MaxLength="50" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="50" />
+          <Property Name="SN" Type="varchar" MaxLength="50" />
+          <Property Name="Captcha" Type="varchar" MaxLength="50" />
+          <Property Name="OperatingState" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="Controller" Type="int" />
+          <Property Name="Pwd" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Lon" Type="float" />
+          <Property Name="H" Type="float" />
+          <Property Name="RTMP" Type="nvarchar" MaxLength="50" />
+          <Property Name="RTMPHd" Type="nvarchar" MaxLength="50" />
+          <Property Name="HLS" Type="nvarchar" MaxLength="50" />
+          <Property Name="HLSHd" Type="nvarchar" MaxLength="50" />
+          <Property Name="CamType" Type="int" />
+        </EntityType>
+        <EntityType Name="CamRTMP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SN" Type="varchar" MaxLength="50" />
+          <Property Name="RTMPhd" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CompanyInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Company" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Industry" Type="nvarchar" MaxLength="50" />
+          <Property Name="LegalRepresentative" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="Enable" Type="int" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="Author" Type="nvarchar" MaxLength="50" />
+          <Property Name="PageView" Type="int" />
+          <Property Name="Details" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SysLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LogTime" Type="datetime" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+          <Property Name="LogType" Type="int" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="PassWord" Type="varchar" MaxLength="100" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="20" />
+          <Property Name="Unit" Type="nvarchar" MaxLength="60" />
+          <Property Name="UnitAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Tel" Type="varchar" MaxLength="20" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="30" />
+          <Property Name="RegTime" Type="datetime" />
+          <Property Name="TryLogTimes" Type="int" />
+          <Property Name="CheckPassTime" Type="datetime" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="IsEnable" Type="int" />
+          <Property Name="UserType" Type="int" />
+          <Property Name="Remark" Type="nvarchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="VideoPath">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SN" Type="varchar" MaxLength="50" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="VideoName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WebPurviewMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PurviewName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PurviewDM" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WebUserPurview">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="UserType" Type="int" />
+          <Property Name="PurviewString" Type="varchar" MaxLength="200" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SmartBuildingModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SmartBuildingEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="CamInfo" EntityType="SmartBuildingModel.CamInfo" />
+          <EntitySet Name="CompanyInfo" EntityType="SmartBuildingModel.CompanyInfo" />
+          <EntitySet Name="News" EntityType="SmartBuildingModel.News" />
+          <EntitySet Name="SysLog" EntityType="SmartBuildingModel.SysLog" />
+          <EntitySet Name="UserInfo" EntityType="SmartBuildingModel.UserInfo" />
+          <EntitySet Name="VideoPath" EntityType="SmartBuildingModel.VideoPath" />
+          <EntitySet Name="CamRTMP" EntityType="SmartBuildingModel.CamRTMP" />
+          <EntitySet Name="WebPurviewMenu集" EntityType="SmartBuildingModel.WebPurviewMenu" />
+          <EntitySet Name="WebUserPurview集" EntityType="SmartBuildingModel.WebUserPurview" />
+        </EntityContainer>
+        <EntityType Name="CamInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CamName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Owner" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="SN" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Captcha" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Pwd" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="Lon" Type="Double" />
+          <Property Name="H" Type="Double" />
+          <Property Name="OperatingState" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RTMP" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="HLS" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Type="Int32" Name="Channel" />
+          <Property Type="String" Name="RTMPHd" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HLSHd" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Unit" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Controller" />
+          <Property Type="Int32" Name="CamType" />
+        </EntityType>
+        <EntityType Name="CompanyInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Company" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Industry" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LegalRepresentative" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Tel" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Enable" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="Author" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PageView" Type="Int32" />
+          <Property Name="Details" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SysLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTime" Type="DateTime" Precision="3" />
+          <Property Name="UserName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Remark" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="LogType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PassWord" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="FullName" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Unit" Type="String" MaxLength="60" Unicode="true" FixedLength="false" />
+          <Property Name="UnitAddress" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Tel" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="RegTime" Type="DateTime" Precision="3" />
+          <Property Name="TryLogTimes" Type="Int32" />
+          <Property Name="CheckPassTime" Type="DateTime" Precision="3" />
+          <Property Name="LastLoginTime" Type="DateTime" Precision="3" />
+          <Property Name="IsEnable" Type="Int32" />
+          <Property Name="UserType" Type="Int32" />
+          <Property Name="Remark" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="VideoPath">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="VideoName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="SN" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="StartTime" Precision="3" />
+          <Property Type="DateTime" Name="EndTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="CamRTMP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SN" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RTMPhd" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WebPurviewMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="PurviewName" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PurviewDM" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WebUserPurview">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UserType" />
+          <Property Type="String" Name="PurviewString" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SmartBuildingModelStoreContainer" CdmEntityContainer="SmartBuildingEntities">
+          <EntitySetMapping Name="CamInfo">
+            <EntityTypeMapping TypeName="SmartBuildingModel.CamInfo">
+              <MappingFragment StoreEntitySet="CamInfo">
+                <ScalarProperty Name="CamType" ColumnName="CamType" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="HLSHd" ColumnName="HLSHd" />
+                <ScalarProperty Name="RTMPHd" ColumnName="RTMPHd" />
+                <ScalarProperty Name="Channel" ColumnName="Channel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CamName" ColumnName="CamName" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="Captcha" ColumnName="Captcha" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lon" ColumnName="Lon" />
+                <ScalarProperty Name="H" ColumnName="H" />
+                <ScalarProperty Name="OperatingState" ColumnName="OperatingState" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="RTMP" ColumnName="RTMP" />
+                <ScalarProperty Name="HLS" ColumnName="HLS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyInfo">
+            <EntityTypeMapping TypeName="SmartBuildingModel.CompanyInfo">
+              <MappingFragment StoreEntitySet="CompanyInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Industry" ColumnName="Industry" />
+                <ScalarProperty Name="LegalRepresentative" ColumnName="LegalRepresentative" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="SmartBuildingModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="PageView" ColumnName="PageView" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SysLog">
+            <EntityTypeMapping TypeName="SmartBuildingModel.SysLog">
+              <MappingFragment StoreEntitySet="SysLog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfo">
+            <EntityTypeMapping TypeName="SmartBuildingModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="UnitAddress" ColumnName="UnitAddress" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+                <ScalarProperty Name="TryLogTimes" ColumnName="TryLogTimes" />
+                <ScalarProperty Name="CheckPassTime" ColumnName="CheckPassTime" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="IsEnable" ColumnName="IsEnable" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoPath">
+            <EntityTypeMapping TypeName="SmartBuildingModel.VideoPath">
+              <MappingFragment StoreEntitySet="VideoPath">
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VideoName" ColumnName="VideoName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CamRTMP">
+            <EntityTypeMapping TypeName="SmartBuildingModel.CamRTMP">
+              <MappingFragment StoreEntitySet="CamRTMP">
+                <ScalarProperty Name="RTMPhd" ColumnName="RTMPhd" />
+                <ScalarProperty Name="SN" ColumnName="SN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebPurviewMenu集">
+            <EntityTypeMapping TypeName="SmartBuildingModel.WebPurviewMenu">
+              <MappingFragment StoreEntitySet="WebPurviewMenu">
+                <ScalarProperty Name="PurviewDM" ColumnName="PurviewDM" />
+                <ScalarProperty Name="PurviewName" ColumnName="PurviewName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebUserPurview集">
+            <EntityTypeMapping TypeName="SmartBuildingModel.WebUserPurview">
+              <MappingFragment StoreEntitySet="WebUserPurview">
+                <ScalarProperty Name="PurviewString" ColumnName="PurviewString" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
