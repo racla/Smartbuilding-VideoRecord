@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using Newtonsoft.Json;
 
 namespace ffmpegForRTMP
 {
@@ -57,8 +58,13 @@ namespace ffmpegForRTMP
             while(true){
                 while (!isOnline)
                 {
-                    string res = HTMLHelper.GetHtml("", null, null);
                     System.Threading.Thread.Sleep(2000);//每2秒判断一次设备是否在线
+                    string res = HTMLHelper.GetHtml(@"https://www.skytraveler7.com/SmartSite/v1/CamInfo/isOnline?SN="+sn, null, null);
+                    var result = JsonConvert.DeserializeObject<dynamic>(res);
+                    if (result.status[0].ToString() == "1")
+                        isOnline = true;
+                    else
+                        isOnline = false;
                 }
                 SaveVideo(sn, RTMPhd);
                 isOnline = false;
@@ -108,10 +114,10 @@ namespace ffmpegForRTMP
             System.Diagnostics.Process p = new System.Diagnostics.Process();
             p.StartInfo.FileName = "cmd.exe";
             p.StartInfo.UseShellExecute = false;    //是否使用操作系统shell启动
-            p.StartInfo.RedirectStandardInput = true;//接受来自调用程序的输入信息
-            p.StartInfo.RedirectStandardOutput = false;//由调用程序获取输出信息
-            p.StartInfo.RedirectStandardError = false;//重定向标准错误输出
-            p.StartInfo.CreateNoWindow = true;//不显示程序窗口
+            p.StartInfo.RedirectStandardInput = false;//接受来自调用程序的输入信息
+            p.StartInfo.RedirectStandardOutput = true;//由调用程序获取输出信息
+            p.StartInfo.RedirectStandardError = true;//重定向标准错误输出
+            p.StartInfo.CreateNoWindow = false;//不显示程序窗口
             p.Start();//启动程序
             //向cmd窗口发送输入信息
             p.StandardInput.WriteLine(cmd + "&exit");

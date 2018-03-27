@@ -34,6 +34,7 @@ namespace ffmpegForRTMP
                 request.AllowAutoRedirect = false;
                 request.CookieContainer = cc;
                 request.KeepAlive = true;
+                request.ContentType = "text/html;charset=UTF-8";
 
                 //提交请求
                 Stream stream;
@@ -57,7 +58,21 @@ namespace ffmpegForRTMP
                 throw ex;
             }
         }
-
+         public static string HttpGet(string Url, string postDataStr)
+         {
+             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Url + (postDataStr == "" ? "" : "?") + postDataStr);
+             request.Method = "GET";
+             request.ContentType = "text/html;charset=UTF-8";
+  
+             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+             Stream myResponseStream = response.GetResponseStream();
+             StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
+             string retString = myStreamReader.ReadToEnd();
+             myStreamReader.Close();
+             myResponseStream.Close();
+  
+             return retString;
+         }
         /// <summary>
         /// 获取html
         /// </summary>
@@ -67,19 +82,21 @@ namespace ffmpegForRTMP
         /// <returns></returns>
         public static string GetHtml(string getUrl, CookieContainer cookieContainer, HttpHeader header)
         {
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
             HttpWebRequest httpWebRequest = null;
             HttpWebResponse httpWebResponse = null;
             try
             {
                 httpWebRequest = (HttpWebRequest)HttpWebRequest.Create(getUrl);
                 httpWebRequest.CookieContainer = cookieContainer;
+                /*
                 httpWebRequest.ContentType = header.contentType;
                 httpWebRequest.ServicePoint.ConnectionLimit = header.maxTry;
                 httpWebRequest.Referer = getUrl;
                 httpWebRequest.Accept = header.accept;
-                httpWebRequest.UserAgent = header.userAgent;
-                httpWebRequest.Method = "POST";
+                httpWebRequest.UserAgent = header.userAgent;*/
+                httpWebRequest.ContentType = "text/html;charset=UTF-8";
+                httpWebRequest.Method = "GET";
                 httpWebResponse = (HttpWebResponse)httpWebRequest.GetResponse();
                 Stream responseStream = httpWebResponse.GetResponseStream();
                 StreamReader streamReader = new StreamReader(responseStream, Encoding.UTF8);
